@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface DLDetailViewController : UIViewController
-@property (copy, nonatomic) NSString *url;
+@property (copy, nonatomic) NSURL *url;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 
 /*@property (strong, nonatomic) id detailItem;

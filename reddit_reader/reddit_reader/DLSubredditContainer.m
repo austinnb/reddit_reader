@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Austin Brewer. All rights reserved.
 //
 
-#import "DLRedditContainer.h"
+#import "DLSubredditContainer.h"
 
-@implementation DLRedditContainer
+@implementation DLSubredditContainer
 
 @end

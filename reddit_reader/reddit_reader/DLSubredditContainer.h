@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DLRedditContainer : NSObject
+@interface DLSubredditContainer : NSObject
 @property (strong, nonatomic) NSString* title;
-@property (strong, nonatomic) NSString* url;
+@property (strong, nonatomic) NSURL* url;
 @property (strong, nonatomic) NSString* subreddit;
 @property (strong, nonatomic) NSString* thumbnail;
 @end

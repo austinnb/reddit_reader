@@ -27,8 +27,8 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     // uhh, I made a request and gave it to the webview
-    NSURL *myURL = [NSURL URLWithString:[self.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:myURL];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:self.url];
     [self.webView loadRequest:request];
 }
 
