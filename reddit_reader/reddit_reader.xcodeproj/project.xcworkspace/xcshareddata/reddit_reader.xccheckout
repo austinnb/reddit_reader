@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>55A9D0E1-BEF4-435B-9476-D487FF60873E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>reddit_reader</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>AEC897A3-0387-4D41-BC69-7E30EA039E90</key>
+		<string>https://github.com/austinnb/reddit_reader.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>reddit_reader/reddit_reader.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>AEC897A3-0387-4D41-BC69-7E30EA039E90</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/austinnb/reddit_reader.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>AEC897A3-0387-4D41-BC69-7E30EA039E90</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AEC897A3-0387-4D41-BC69-7E30EA039E90</string>
+			<key>IDESourceControlWCCName</key>
+			<string>reddit_reader</string>
+		</dict>
+	</array>
+</dict>
+</plist>

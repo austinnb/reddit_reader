@@ -37,6 +37,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     // my very poorly written subreddit regex and a predicate to test the textField with
+    /*
     NSString *subredditRegex = @"(/r/+([a-zA-Z0-9]*)";
     NSPredicate *subredditTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", subredditRegex];
     
@@ -54,7 +55,9 @@
         [self performSegueWithIdentifier:@"Results" sender:self];
         //[textField resignFirstResponder];
     }
-    return result;
+    */
+    [self performSegueWithIdentifier:@"Results" sender:self];
+    return YES;
 }
 
 
