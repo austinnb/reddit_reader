@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0036E74419783FAA00A84E82 /* Untitled-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0036E74319783FAA00A84E82 /* Untitled-1.png */; };
+		0036E7471978499200A84E82 /* DLUserContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0036E7461978499200A84E82 /* DLUserContainer.m */; };
 		D9352032197335480031C8BE /* DLSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9352031197335480031C8BE /* DLSearchViewController.m */; };
-		D93577EB1972F48E001CB66E /* DLRedditContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = D93577EA1972F48E001CB66E /* DLRedditContainer.m */; };
+		D93577EB1972F48E001CB66E /* DLSubredditContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = D93577EA1972F48E001CB66E /* DLSubredditContainer.m */; };
 		D9D8C42219721BA9001B52F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D8C42119721BA9001B52F9 /* Foundation.framework */; };
 		D9D8C42419721BA9001B52F9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D8C42319721BA9001B52F9 /* CoreGraphics.framework */; };
 		D9D8C42619721BA9001B52F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D8C42519721BA9001B52F9 /* UIKit.framework */; };
@@ -37,10 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0036E74319783FAA00A84E82 /* Untitled-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Untitled-1.png"; sourceTree = "<group>"; };
+		0036E7451978499200A84E82 /* DLUserContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLUserContainer.h; sourceTree = "<group>"; };
+		0036E7461978499200A84E82 /* DLUserContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLUserContainer.m; sourceTree = "<group>"; };
 		D9352030197335480031C8BE /* DLSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSearchViewController.h; sourceTree = "<group>"; };
 		D9352031197335480031C8BE /* DLSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSearchViewController.m; sourceTree = "<group>"; };
-		D93577E91972F48E001CB66E /* DLRedditContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRedditContainer.h; sourceTree = "<group>"; };
-		D93577EA1972F48E001CB66E /* DLRedditContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRedditContainer.m; sourceTree = "<group>"; };
+		D93577E91972F48E001CB66E /* DLSubredditContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSubredditContainer.h; sourceTree = "<group>"; };
+		D93577EA1972F48E001CB66E /* DLSubredditContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSubredditContainer.m; sourceTree = "<group>"; };
 		D9D8C41E19721BA9001B52F9 /* reddit_reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reddit_reader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D8C42119721BA9001B52F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9D8C42319721BA9001B52F9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -125,15 +130,17 @@
 				D9D8C43119721BA9001B52F9 /* DLAppDelegate.m */,
 				D9D8C43319721BA9001B52F9 /* Main.storyboard */,
 				D9352030197335480031C8BE /* DLSearchViewController.h */,
-				D9352031197335480031C8BE /* DLSearchViewController.m */,
 				D9D8C43619721BA9001B52F9 /* DLMasterViewController.h */,
+				D9352031197335480031C8BE /* DLSearchViewController.m */,
 				D9D8C43719721BA9001B52F9 /* DLMasterViewController.m */,
-				D93577E91972F48E001CB66E /* DLRedditContainer.h */,
-				D93577EA1972F48E001CB66E /* DLRedditContainer.m */,
+				D93577E91972F48E001CB66E /* DLSubredditContainer.h */,
+				D93577EA1972F48E001CB66E /* DLSubredditContainer.m */,
 				D9D8C43919721BA9001B52F9 /* DLDetailViewController.h */,
 				D9D8C43A19721BA9001B52F9 /* DLDetailViewController.m */,
 				D9D8C43C19721BA9001B52F9 /* Images.xcassets */,
 				D9D8C42819721BA9001B52F9 /* Supporting Files */,
+				0036E7451978499200A84E82 /* DLUserContainer.h */,
+				0036E7461978499200A84E82 /* DLUserContainer.m */,
 			);
 			path = reddit_reader;
 			sourceTree = "<group>";
@@ -141,6 +148,7 @@
 		D9D8C42819721BA9001B52F9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0036E74319783FAA00A84E82 /* Untitled-1.png */,
 				D9D8C42919721BA9001B52F9 /* reddit_reader-Info.plist */,
 				D9D8C42A19721BA9001B52F9 /* InfoPlist.strings */,
 				D9D8C42D19721BA9001B52F9 /* main.m */,
@@ -244,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0036E74419783FAA00A84E82 /* Untitled-1.png in Resources */,
 				D9D8C43D19721BA9001B52F9 /* Images.xcassets in Resources */,
 				D9D8C42C19721BA9001B52F9 /* InfoPlist.strings in Resources */,
 				D9D8C43519721BA9001B52F9 /* Main.storyboard in Resources */,
@@ -265,9 +274,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D93577EB1972F48E001CB66E /* DLRedditContainer.m in Sources */,
+				D93577EB1972F48E001CB66E /* DLSubredditContainer.m in Sources */,
 				D9D8C43219721BA9001B52F9 /* DLAppDelegate.m in Sources */,
 				D9352032197335480031C8BE /* DLSearchViewController.m in Sources */,
+				0036E7471978499200A84E82 /* DLUserContainer.m in Sources */,
 				D9D8C43B19721BA9001B52F9 /* DLDetailViewController.m in Sources */,
 				D9D8C43819721BA9001B52F9 /* DLMasterViewController.m in Sources */,
 				D9D8C42E19721BA9001B52F9 /* main.m in Sources */,

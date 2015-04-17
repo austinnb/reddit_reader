@@ -10,7 +10,9 @@
 
 #import "DLDetailViewController.h"
 
-#import "DLRedditContainer.h"
+#import "DLSubredditContainer.h"
+
+#import "DLUserContainer.h"
 
 @interface DLMasterViewController () {
     NSMutableArray *_objects;
@@ -90,20 +92,30 @@
     //reddit displays 25 items by default so lets find them in the dectionary and make some post objects
     //(DLRedditContainers) to fill _objects.
     _objects = [[NSMutableArray alloc] initWithCapacity:25];
-    for (NSMutableDictionary *dict in dictionary[@"data"][@"children"]) {
-        NSLog(@"%@", dict[@"data"][@"title"]);
-        NSLog(@"%@", dict[@"data"][@"subreddit"]);
-        NSLog(@"%@", dict[@"data"][@"url"]);
-        NSLog(@"%@", dict[@"data"][@"thumbnail"]);
-        DLRedditContainer *post = [[DLRedditContainer alloc] init];
-        post.title = dict[@"data"][@"title"];
-        post.url = dict[@"data"][@"url"];
-        post.subreddit = dict[@"data"][@"subreddit"];
-        post.thumbnail = dict[@"data"][@"thumbnail"];
-        [_objects addObject:post];
-        [self.tableView reloadData];
+    for (NSMutableDictionary *childrenDictionary in dictionary[@"data"][@"children"]) {
+        
+        if ([childrenDictionary[@"kind"] isEqualToString:@"t3"]) {
+            NSLog(@"%@", childrenDictionary[@"data"][@"title"]);
+            NSLog(@"%@", childrenDictionary[@"data"][@"subreddit"]);
+            NSLog(@"%@", childrenDictionary[@"data"][@"url"]);
+            NSLog(@"%@", childrenDictionary[@"data"][@"thumbnail"]);
+            DLSubredditContainer *subPost = [[DLSubredditContainer alloc] init];
+            subPost.title = childrenDictionary[@"data"][@"title"];
+            subPost.url = [NSURL URLWithString:childrenDictionary[@"data"][@"url"]];
+            subPost.subreddit = childrenDictionary[@"data"][@"subreddit"];
+            subPost.thumbnail = childrenDictionary[@"data"][@"thumbnail"];
+            [_objects addObject:subPost];
+        } else if ([childrenDictionary[@"kind"] isEqualToString:@"t1"]) {
+            DLUserContainer *userPost = [[DLUserContainer alloc] init];
+            userPost.textBody = childrenDictionary[@"data"][@"body"];
+            userPost.url = [NSURL URLWithString:childrenDictionary[@"data"][@"link_url"]];
+            userPost.subreddit = childrenDictionary[@"data"][@"subreddit"];
+            [_objects addObject:userPost];
+        } else {
+            //FIXME
+        }
     }
-    
+    [self.tableView reloadData];
     
     
 }
@@ -156,26 +168,32 @@
     // build our cells from objects. they need a title, subtitle (subreddit), url, and thumbnail
     // url for images in the cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.imageView.image = [UIImage imageNamed:@"Untitled-1"];
     
-    DLRedditContainer *object = _objects[indexPath.row];
-    cell.textLabel.text = object.title;
-    cell.detailTextLabel.text = object.subreddit;
-    cell.imageView.image = [UIImage imageWithContentsOfFile:@"/Users/Austin/Desktop/Untitled-1.png"];
-    [self downloadImageWithURL:object.thumbnail completionBlock:^(BOOL succeeded, UIImage *image) {
-        if (succeeded) {
-            cell.imageView.image = image;
-            
-            // /r/earthporn was really giving me issue with rezising the thumbnail
-            // this keeps it at 50x50
-            CGSize itemSize = CGSizeMake(50, 50);
-            UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
-            CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
-            [cell.imageView.image drawInRect:imageRect];
-            cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
-            
-        }
-    }];
+    if ([_objects[indexPath.row] isKindOfClass:[DLSubredditContainer class]]) {
+        DLSubredditContainer *subredditObject = _objects[indexPath.row];
+        cell.textLabel.text = subredditObject.title;
+        cell.detailTextLabel.text = subredditObject.subreddit;
+        [self downloadImageWithURL:subredditObject.thumbnail completionBlock:^(BOOL succeeded, UIImage *image) {
+            if (succeeded) {
+                cell.imageView.image = image;
+                
+                // /r/earthporn was really giving me issue with rezising the thumbnail
+                // this keeps it at 50x50
+                CGSize itemSize = CGSizeMake(50, 50);
+                UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
+                CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+                [cell.imageView.image drawInRect:imageRect];
+                cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+                UIGraphicsEndImageContext();
+                
+            }
+        }];
+    } else {
+        DLUserContainer *userObject = _objects[indexPath.row];
+        cell.textLabel.text = userObject.textBody;
+        cell.detailTextLabel.text = userObject.subreddit;
+    }
     return cell;
 }
 
@@ -215,13 +233,19 @@
 {
     //pass the selected cells url string to the detail view controllers url property
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    NSString *string = [_objects[indexPath.row] url];
-    [[segue destinationViewController] setUrl:string];
-    /*if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
-    }*/
+    id object = _objects[indexPath.row];
+    NSURL *url;
+    if ([object isKindOfClass:[DLSubredditContainer class]]) {
+        DLSubredditContainer *post = object;
+        url = [post url];
+    } else {
+        DLUserContainer *post = object;
+        url = post.url;
+    }
+    
+    [[segue destinationViewController] setUrl:url];
+    
+    
 }
 
 @end
